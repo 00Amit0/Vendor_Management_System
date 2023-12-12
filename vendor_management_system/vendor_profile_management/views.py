@@ -31,22 +31,6 @@ class VendorPerformanceView(generics.RetrieveAPIView):
         completed_pos = instance.purchaseorder_set.filter(status='completed')
         successfully_fulfilled_pos = completed_pos.exclude(issue_date__isnull=False)
 
-
-        # Calculate performance metrics
-        # on_time_delivery_rate = instance.on_time_delivery_rate
-        # quality_rating_avg = instance.quality_rating_avg
-        # average_response_time = instance.average_response_time
-        # fulfillment_rate = instance.fulfillment_rate
-
-        # # You can customize the response format as needed
-        # performance_data = {
-        #     "on_time_delivery_rate": on_time_delivery_rate,
-        #     "quality_rating_avg": quality_rating_avg,
-        #     "average_response_time": average_response_time,
-        #     "fulfillment_rate": fulfillment_rate,
-        # }
-
-        # return Response(performance_data)
         # Calculate performance metrics
         completed_pos = instance.purchaseorder_set.filter(status='completed')  # Adjust the status filtering as needed
         total_completed_pos = completed_pos.count()
