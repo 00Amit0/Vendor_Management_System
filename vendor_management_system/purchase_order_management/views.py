@@ -18,22 +18,6 @@ class PurchaseOrderRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAP
         self.perform_destroy(instance)
         return Response({"message": "Purchase Order Deleted Successfully"}, status=status.HTTP_204_NO_CONTENT)
     
-# class AcknowledgePurchaseOrderView(generics.UpdateAPIView):
-#     queryset = PurchaseOrder.objects.all()
-#     serializer_class = PurchaseOrderSerializer
-
-#     def update(self, request, *args, **kwargs):
-#         instance = self.get_object()
-
-#         # Update acknowledgment_date
-#         serializer = AcknowledgePurchaseOrderSerializer(instance, data=request.data)
-#         serializer.is_valid(raise_exception=True)
-#         serializer.save()
-
-#         # Trigger recalculation of average_response_time for the vendor
-#         instance.vendor.average_response_time
-
-#         return Response({"message": "Purchase Order acknowledged successfully","data": serializer.data,}, status=status.HTTP_200_OK)
 class AcknowledgePurchaseOrderView(generics.UpdateAPIView):
     queryset = PurchaseOrder.objects.all()
     serializer_class = PurchaseOrderSerializer
